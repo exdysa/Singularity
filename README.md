@@ -9,3 +9,4 @@ A video from the previous project :
 https://github.com/civitai/CivitUI/assets/34775928/61f8662f-5a52-46ac-aac2-c751b0f8b02d
 
 
+![Screenshot 2024-06-20 040729(1)](https://github.com/exdysa/SabreUI/assets/91800957/30c11ffb-2f9a-42c7-b66b-adb59a2030a5)
