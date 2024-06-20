@@ -95,9 +95,14 @@ export function transformData(inputJson: any, widgets: any): any {
     const nodeKey = `node-${node.id}`;
     nodeIdMap[node.id] = nodeKey;
     const nodeInfo = widgets[node.type];
+
     if (!nodeInfo) {
+      console.log("missing node type: ", node.type);
+      console.log(node);
       missingNodeTypes.push(node.type);
-      return; // Skip further processing for this node
+      return;
+    } else {
+      console.log("nodeInfo:", nodeInfo);
     }
 
     const nodeItem: SDNode = {
@@ -197,10 +202,11 @@ export function transformData(inputJson: any, widgets: any): any {
   }
 
   if (missingNodeTypes.length > 0) {
-    const missingTypesMessage = missingNodeTypes.join(", ");
     toast.error("The following node types are missing:", {
-      description: `${missingTypesMessage}`,
+      description: `${missingNodeTypes.join(", ")}`,
     });
+  } else {
+    toast.success("Successfully loaded workflow.");
   }
 
   return outputJson;
