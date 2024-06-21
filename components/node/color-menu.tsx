@@ -1,4 +1,4 @@
-xport const colorList: Array<string> = [
+export const colorList: Array<string> = [
   "",
 	"cyan",
   "cyanbg",
