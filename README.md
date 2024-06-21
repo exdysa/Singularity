@@ -7,5 +7,3 @@ Lets create a more inviting and visually-pleasing ComfyUI Frontend using Typescr
 A video from the previous project :
 
 https://github.com/civitai/CivitUI/assets/34775928/61f8662f-5a52-46ac-aac2-c751b0f8b02d
-
-
