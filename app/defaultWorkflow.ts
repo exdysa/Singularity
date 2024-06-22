@@ -113,7 +113,7 @@ const defaultWorkflow: PersistedGraph = {
           "value": {
               "widget": "CheckpointLoaderSimple",
               "fields": {
-                  "ckpt_name": "Aniverse.safetensors"
+                  "ckpt_name": ""
               }
           },
           "position": {
