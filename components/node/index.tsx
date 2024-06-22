@@ -2,8 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { useShallow } from "zustand/react/shallow";
-import { useTheme } from "next-themes";
-import { mix, rgba } from "polished";
 import { NodeResizer, type NodeProps } from "reactflow";
 
 import { useAppStore } from "@/store";
@@ -13,7 +11,6 @@ import { ColorMenu, colorList } from "@/components/node/color-menu";
 import { Progress } from "@/components/ui/progress";
 
 import SdNode from "./sd-node";
-import { GroupCard } from "./style";
 import NodeCard from "./sd-node/node-card";
 import {
   ContextMenu,
@@ -43,7 +40,6 @@ const NodeComponent = (node: NodeProps<Widget>) => {
   const ref = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { theme } = useTheme();
   const [nicknameInput, setNicknameInput] = useState(false);
 
   const { progressBar, onDuplicateNode, onDeleteNode, onModifyChange } =
@@ -83,7 +79,7 @@ const NodeComponent = (node: NodeProps<Widget>) => {
 
   useEffect(() => {
     if (nicknameInput && inputRef.current) {
-      inputRef.current.focus();
+      setTimeout(() => inputRef.current?.focus(), 1); // hate this stupid ass hack but dunno how to fix
     }
   }, [nicknameInput]);
 
@@ -98,15 +94,20 @@ const NodeComponent = (node: NodeProps<Widget>) => {
               if (e.key === "Backspace") {
                 e.stopPropagation();
               }
+              if (["Enter", "Escape"].includes(e.key)) {
+                (e.target as HTMLElement).blur()
+              }
             }}
             onBlur={handleNickname}
             className="nodrag"
           />
         ) : (
           <div
-            className={`w-fit inline-flex h-9 px-4 ${
+            className={`w-fit ${
               isInProgress ? "animate-shimmer" : ""
-            } text-sm items-center justify-center rounded-full border border-opacity-40 dark:border-slate-800 bg-[linear-gradient(110deg,rgba(240,241,243,0.5),45%,rgba(254,254,254,0.5),55%,rgba(240,241,243,0.5))] dark:bg-[linear-gradient(110deg,rgba(0,1,3,0.5),45%,rgba(30,38,49,0.5),55%,rgba(0,1,3,0.5))] bg-[length:200%_100%]`}
+            // } text-sm items-center justify-center rounded-full border border-opacity-40 dark:border-slate-800 bg-[linear-gradient(110deg,rgba(240,241,243,0.5),45%,rgba(254,254,254,0.5),55%,rgba(240,241,243,0.5))] dark:bg-[linear-gradient(110deg,rgba(0,1,3,0.5),45%,rgba(30,38,49,0.5),55%,rgba(0,1,3,0.5))] bg-[length:200%_100%]`}
+            } text-sm rounded-full`}
+            onDoubleClick={() => setNicknameInput(true)}
           >
             {name}
           </div>
@@ -127,7 +128,7 @@ const NodeComponent = (node: NodeProps<Widget>) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
-        <NodeCard active={isInProgress} title={<Title />} node={node}>
+        <NodeCard active={isInProgress} selected={isSelected} title={<Title />} node={node}>
           <SdNode {...node} />
         </NodeCard>
       </ContextMenuTrigger>
