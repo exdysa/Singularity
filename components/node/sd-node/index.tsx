@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { NodeProps } from "reactflow";
+import { NodeProps, useUpdateNodeInternals } from "reactflow";
 import { useShallow } from "zustand/react/shallow";
 
 import { NodeImgPreview } from "./node-img-preview";
@@ -16,10 +16,11 @@ import {
 
 import { useAppStore } from "@/store";
 import { Widget } from "@/types";
-import { checkInput } from "@/utils";
+import { checkInput, updateNode } from "@/utils";
 
 const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Widget>) => {
-  const { imagePreviews, inputImgPreviews, onUpdateNodes, nodes, graph } = useAppStore(
+  const updateNodeInternals = useUpdateNodeInternals();
+  const { imagePreviews, inputImgPreviews, nodes, graph } = useAppStore(
     useShallow((st) => ({
       imagePreviews: st.graph?.[id]?.images
         ?.map((image, index) => ({ image, index }))
@@ -33,7 +34,6 @@ const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Wi
           index: 0,
         },
       ].filter((i) => i.image.filename),
-      onUpdateNodes: st.onUpdateNodes,
       nodes: st.nodes,
       graph: st.graph,
     }))
@@ -47,6 +47,7 @@ const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Wi
     } else {
       setSwappedParams(p => [...p, item]);
     }
+    updateNodeInternals(id);
   }
 
   const params = useMemo(() => {
@@ -64,6 +65,7 @@ const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Wi
   }, [input, swappedParams]);
 
   const inputs = useMemo(() => {
+    console.log(input);
     const makeInputList = (data: Record<string, any> | undefined) => {
       const inputList: any[] = [];
       Object.entries(data ?? []).forEach(([property, inputType]) => {
@@ -76,6 +78,7 @@ const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Wi
     return {
       required: makeInputList(input.required),
       optional: makeInputList(input.optional),
+      // swappedParams:
     };
   }, [input]);
 

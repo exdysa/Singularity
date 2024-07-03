@@ -15,7 +15,7 @@ import type {
 import { Edge, Node, OnConnect, OnEdgesChange, OnNodesChange } from "reactflow";
 
 export type OnPropChange = (
-  node: NodeId,
+  id: NodeId,
   property: PropertyKey,
   value: any
 ) => void;

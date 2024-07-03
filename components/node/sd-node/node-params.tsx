@@ -49,6 +49,7 @@ const NodeParamsComponent = ({ data, nodeId, selected, swapItem }: NodeParamsPro
         >
           {name !== "text" && (
             <NodeHandle
+              key={i}
               slotType={type}
               label={name}
               type="target"
