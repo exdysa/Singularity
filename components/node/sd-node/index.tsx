@@ -18,7 +18,7 @@ import { useAppStore } from "@/store";
 import { Widget } from "@/types";
 import { checkInput, updateNode } from "@/utils";
 
-const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Widget>) => {
+const SdNodeComponent = ({ id, data: { input, output, output_name }, selected }: NodeProps<Widget>) => {
   const updateNodeInternals = useUpdateNodeInternals();
   const { imagePreviews, inputImgPreviews, nodes, graph } = useAppStore(
     useShallow((st) => ({
@@ -65,7 +65,6 @@ const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Wi
   }, [input, swappedParams]);
 
   const inputs = useMemo(() => {
-    console.log(input);
     const makeInputList = (data: Record<string, any> | undefined) => {
       const inputList: any[] = [];
       Object.entries(data ?? []).forEach(([property, inputType]) => {
@@ -82,6 +81,10 @@ const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Wi
     };
   }, [input]);
 
+  const outputs = useMemo(() => {
+    return output.map((o, i) => ({ name: output_name[i], type: o }));
+  }, [output, output_name])
+
   const { expanded, onExpand } = useAppStore((state) => ({
     expanded: state.expanded,
     onExpand: state.onExpand,
@@ -97,7 +100,7 @@ const SdNodeComponent = ({ id, data: { input, output }, selected }: NodeProps<Wi
           <NodeInputs data={inputs} selected={selected} />
           <NodeSwappedParams data={swappedParams} selected={selected} swapItem={swapItem} />
         </div>
-        <NodeOutputs data={output} selected={selected} />
+        <NodeOutputs data={outputs} selected={selected} />
       </div>
       {params.length > 0 && (
         <Accordion

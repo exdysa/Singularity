@@ -2,20 +2,26 @@ import React from "react";
 import { Position } from "reactflow";
 import { NodeHandle } from "./node-handle";
 
+interface Output {
+  name: string;
+  type: string;
+}
+
 interface NodeOutputsProps {
-  data: string[];
+  data: Output[];
   selected: boolean;
 }
 
 const NodeOutputsComponent = ({ data, selected }: NodeOutputsProps) => {
   if (!data?.length) return <div />;
+  // console.log(data);
   return (
     <div className="flex-1">
-      {data.map((item, i) => (
+      {data.map(({ name, type }, i) => (
         <NodeHandle
           key={i}
-          slotType={item}
-          label={item}
+          slotType={type}
+          label={name}
           type="source"
           position={Position.Right}
           isRequired
