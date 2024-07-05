@@ -34,10 +34,12 @@ export const NodeHandle = ({
       if (connection.targetHandle === "*" || connection.sourceHandle === "*")
         return true;
       try {
-        let targetType = nodes.find((n) => n.id === connection.target)?.data
-          .input.required[String(connection.targetHandle)][0];
-        if (isArray(targetType)) targetType = "STRING";
-        const sourceType = connection.sourceHandle;
+        const findType = (id: string | null, handle: string | null) => {
+          const type = nodes.find((n) => n.id === id)?.data.input.required[String(handle)][0];
+          return isArray(type) ? "STRING" : type;
+        }
+        const targetType = findType(connection.target, connection.targetHandle);
+        const sourceType = findType(connection.source, connection.sourceHandle);
         return targetType === sourceType;
       } catch {
         return true;
