@@ -14,7 +14,6 @@ interface NodeOutputsProps {
 
 const NodeOutputsComponent = ({ data, selected }: NodeOutputsProps) => {
   if (!data?.length) return <div />;
-  // console.log(data);
   return (
     <div className="flex-1">
       {data.map(({ name, type }, i) => (
