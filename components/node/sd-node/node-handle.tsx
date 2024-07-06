@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Connection, Handle, HandleType, Position } from "reactflow";
+import { Connection, Handle, HandleType, Node, Position } from "reactflow";
 import { isArray, startCase } from "lodash-es";
 import { useShallow } from "zustand/react/shallow";
 import { useAppStore } from "@/store";
@@ -34,12 +34,16 @@ export const NodeHandle = ({
       if (connection.targetHandle === "*" || connection.sourceHandle === "*")
         return true;
       try {
-        const findType = (id: string | null, handle: string | null) => {
-          const type = nodes.find((n) => n.id === id)?.data.input.required[String(handle)][0];
-          return isArray(type) ? "STRING" : type;
-        }
-        const targetType = findType(connection.target, connection.targetHandle);
-        const sourceType = findType(connection.source, connection.sourceHandle);
+        const getNode = (id: string | null) => nodes.find((n) => n.id === id) as Node;
+
+        const targetNode = getNode(connection.target);
+        const sourceNode = getNode(connection.source);
+
+        const checkType = (type: any) => isArray(type) ? "STRING" : type;
+
+        const targetType = checkType(targetNode.data.input.required[String(connection.targetHandle)][0]);
+        const sourceType = checkType(sourceNode.data.output[sourceNode.data.output_name.indexOf(connection.sourceHandle)]);
+        
         return targetType === sourceType;
       } catch {
         return true;
