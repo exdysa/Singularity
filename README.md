@@ -232,7 +232,7 @@
 
 ### Singularity
 
-5. > ### Once PyTorch and Friends are installed, run this command to install Singularity to your current directory.
+5. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox to your current directory.
    > ```
    >  git clone https://github.com/darkshapes/sdbx.git
    >  ```
@@ -240,7 +240,7 @@
 ##
 6. > ### Install the last requirements
    > ```
-   > cd Singularity
+   > cd sdbx
    > pip install -r requirements.txt
    > ```
 ##
