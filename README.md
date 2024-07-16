@@ -1,6 +1,6 @@
 
 
-# [SabreUI](#sabre) - A [ComfyUI](https://github.com/comfyanonymous/ComfyUI) restyle
+# [Singularity](#singularity) - A UI for [Shadowbox](https://github.com/darkshapes/sdbx)
 
 <div align="center"> 
   
@@ -18,7 +18,7 @@
 
 ##
 
-![A screenshot of the UI showing a black graph and labeled boxes, which are nodes spread across the graph. The boxes are organized in a creative and flowing manner](https://github.com/MaxTretikov/SabreUI/assets/91800957/d842e05c-a903-4579-8259-9e29b117c0a4)
+![Screenshot 2024-07-15 025813](https://github.com/user-attachments/assets/525ef431-742b-40fb-b0b9-2aaf5b52f9e1)
 
 </div>
 
@@ -27,7 +27,7 @@
 
 > [!TIP]
 >
-> ##### For best results, we recommend using SabreUI with 3D graphics cards. Please ensure you have the current driver installed for your card. [NVIDIA.](https://www.nvidia.com/Download/index.aspx) [AMD.](https://www.amd.com/en/support/download/drivers.html)
+> ##### For best results, we recommend using Shadowbox with 3D graphics cards. Please ensure you have the current driver installed for your card. [NVIDIA.](https://www.nvidia.com/Download/index.aspx) [AMD.](https://www.amd.com/en/support/download/drivers.html)
 ##
 > <a name="windows">
 
@@ -228,23 +228,23 @@
 
 ##
 
-<a name="sabre" />
+<a name="singularity" />
 
-### SabreUI
+### Singularity
 
-5. > ### Once PyTorch and Friends are installed, run this command to install Sabre to your current directory.
+5. > ### Once PyTorch and Friends are installed, run this command to install Singularity to your current directory.
    > ```
-   >  git clone https://github.com/MaxTretikov/ComfyUI.git
+   >  git clone https://github.com/darkshapes/sdbx.git
    >  ```
-   > ##### Extended functionality of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) will also allow you to run SabreUI from command line.
+   > ##### Anticipated functionality of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) will also allow you to run Singularity from command line.
 ##
 6. > ### Install the last requirements
    > ```
-   > cd ComfyUI
+   > cd Singularity
    > pip install -r requirements.txt
    > ```
 ##
-7. ### Launch SabreUI
+7. ### Launch Shadowbox
    > ```
    > python main.py --output-directory /YOUR_FOLDER_NAME --input-directory /YOUR_FOLDER_NAME/input
    > ```
@@ -260,7 +260,7 @@
    > ```
 ##
 
-8. > ### Open your browser to [127.0.0.1:8188](https://127.0.0.1:8188) and Choose SabreUI from the settings menu 
+8. > ### Open your browser to [127.0.0.1:8188](https://127.0.0.1:8188) and Choose Singularity from the settings menu 
 
 # Done!
 <details><summary>
@@ -287,4 +287,4 @@
 ##
 
 <div align="right">
-<sub>Lets create a more inviting and visually-pleasing ComfyUI Frontend using Typescript and ReactFlow!</sub></div>
+<sub>Lets create a more inviting and visually-pleasing ComfyUI using Typescript and ReactFlow!</sub></div>
