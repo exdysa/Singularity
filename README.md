@@ -18,7 +18,7 @@
 
 ##
 
-![Screenshot 2024-07-15 025813](https://github.com/user-attachments/assets/525ef431-742b-40fb-b0b9-2aaf5b52f9e1)
+![Screenshot 2024-07-16 193141(1)](https://github.com/user-attachments/assets/6e79bd1d-7dfa-4931-bcb9-4386b6d0128c)
 
 </div>
 
@@ -222,7 +222,7 @@
 ##
 
 
-3. > ### Activate the environment
+2. > ### Activate the environment
    > ##### - Windows
    > ```
    > .venv\Scripts\activate
@@ -233,7 +233,7 @@
    > ```
    > ##
    
-4. > ### Install PyTorch
+3. > ### Install PyTorch
    > ###### - NVIDIA: 
    > ```
    > pip3 install torch==2.3.0+cu121 torchvision torchaudio --index-url=https://download.pytorch.org/whl/cu121
@@ -257,19 +257,22 @@
 
 ### Shadowbox
 
-5. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox with Singularity into your current directory.
+4. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox with Singularity into your current directory.
    > ```
    >  git clone https://github.com/darkshapes/sdbx.git
    >  ```
    > ##### Anticipated functionality of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) will also allow you to run Singularity from command line.
    > ##
    
-6. > ### Install the last requirements
+5. > ### Install the last requirements
    > ```
    > cd sdbx
-   > pip install -r requirements.txt
+   > pip install -r <(sed '/^[torch|torchaudio]/d' requirements.txt)
    > ```
    > ##
+
+6. > ### *[07/16/24 Hotfix]* Remove `/comfy/web` folder, then place these folders inside the `/sdbx` root directory  [singularity-20240716.zip](https://github.com/user-attachments/files/16257537/singularity-20240716.zip)
+
    
 7. ### Launch Shadowbox
    > ```
@@ -284,8 +287,8 @@
    > python main.py --force-fp16 --output-directory /YOUR_FOLDER_NAME --input-directory /YOUR_FOLDER_NAME/input
    > ```
    > ##
-
-8. > ### Open your browser to [127.0.0.1:8188](https://127.0.0.1:8188) and Choose Singularity from the settings menu 
+   
+8. > ### Open your browser to [127.0.0.1:8188](https://127.0.0.1:8188)
 
 # Done!
 <details><summary>
