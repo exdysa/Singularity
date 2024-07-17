@@ -257,7 +257,8 @@
 
 ### Shadowbox
 
-4. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox with Singularity into your current directory.
+
+5. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox to your current directory.
    > ```
    >  git clone https://github.com/darkshapes/sdbx.git
    >  ```
