@@ -18,7 +18,7 @@
 
 ##
 
-![Screenshot 2024-07-15 025813](https://github.com/user-attachments/assets/525ef431-742b-40fb-b0b9-2aaf5b52f9e1)
+![Screenshot 2024-07-16 193141(1)](https://github.com/user-attachments/assets/6e79bd1d-7dfa-4931-bcb9-4386b6d0128c)
 
 </div>
 
@@ -34,36 +34,44 @@
 <details><summary>
 
   ## Windows<hr></summary>
->
-> ##
->
+
+ ##
+
 >  #### Typical Installation
->
+
 1. > ######  Download [Python](https://www.python.org/downloads/windows/)
+   
 2. > ######  Check the `Install for All Users` and `Add Python.exe to Path` boxes in the installer 
    >
    - [x] Install for All Users
    - [x] Add python.exe to Path
+         
 3. > ###### Confirm Python's installation . Hit Windows + R and write
    > ```
    > cmd /k where python && pause
    > ```
    > ##### This command should print a line that says something similar to `C:\Directory\Scripts\python.exe` If not, ensure the entered/ command is identical, then reboot and try again, or repeat the install step, double-checking that the options are selected.
+   
 4. > ###### Download [Git](https://git-scm.com/download/win)
+   
 5. > ###### In the installer, ensure the Git LFS box is marked
    >
    - [x] Git LFS (Large File Support)
+         
 6. > ###### Set Git to be usable from Windows Command line
    >
    - [x] Git from the command line and also from 3rd-party software.
+        
 7. > ###### Set the option to `Use Windows' default console window`
    >
    - [x]  Use Windows' default console window
+         
 8. > ###### Confirm the install by opening Command Prompt or Powershell. Hit Windows + R and write
    > ```
    > cmd /k where git && pause
    > ```
    > ##### This should print a line that says something similar to `C:\Program Files\Git\git.exe` If not, check your spelling, reboot and try again, or repeat the install step, double-checking that the options are selected.
+   
  9. > ##### While the terminal window is open, change the behavior of Command Prompt so it does not freeze when clicked:
     > ##### i. `right click` the Command Prompt title bar
     > ##### ii. choose `Properties` and uncheck the `QuickEdit Mode` box. Hit `OK`.
@@ -74,7 +82,6 @@
   
 <details> <summary>
 
->
 > #### Alternative Windows Subsystem for Linux Installation </summary>
  
 > ##### Though more AI components are supporte by WSL, these benefits may not compensate for the performance loss of WSL. For the best experience, we recommend using *[Windows Manual Install instructions](#windows)*.
@@ -127,9 +134,9 @@
       > sudo apt-get -y install cuda-toolkit-12-5
       > ```
   </details> 
-
->
-> ##
+  
+  ##
+   
  <details><summary>
    
 > ### AMD </summary>
@@ -152,11 +159,22 @@
 
 ## MacOS <hr></summary>
 
-1. > ###### Install [Xcode](https://apps.apple.com/us/app/xcode/id497799835)
+1. > 1. ######  [Homebrew](https://brew.sh) users can open `Terminal` and enter:
+   > ```
+   > brew install python
+   > ```
+   >  ###### then follow the [Python instructions](#linux). 
+   >
+   > 2. ###### App Store users - Install [Xcode](https://apps.apple.com/us/app/xcode/id497799835)
+##  
 2. > ###### Open `Terminal` and enter the following:
    > ```
    > xcode-select --install
 3. > ###### Follow the [Python instructions](#linux)
+   >
+
+
+
 </details></details>
 
 <summary>
@@ -164,28 +182,38 @@
 <a name="linux " />
 
 ## Linux<hr></summary>
-1. > ### Update your repository and install upgrades
+
+> [!NOTE]   
+   > ### Linux users should update and upgrade repository
    > ###### - ***WSL***/Ubuntu/Debian:
    > ```
    > sudo apt-get -y update & sudo apt-get -y upgrade
    > ```
-
    > ###### - Redhat/Fedora:
    >  ```
    >  sudo dnf update & sudo dnf upgrade
    >  ```
-
    > ###### - Arch:
    >   ```
    >  sudo pacman -Syu
    > ```
-   >
    > ##
+   > 
+
 <a name="python" />
 
-2. > ### Create a virtual environment in your current directory
- ##
-> [!NOTE]
+   >
+1. > ### Create a virtual environment in your current directory
+   >
+   >   ##
+
+> [!IMPORTANT]
+>
+> *Do not use the same virtual environment as an existing ComfyUI installation.*
+>
+##
+
+> [!TIP]
 >
 > We recommend running this command from an easy to remember location while avoiding `/home`, `/Program Files`, `/Windows`, and other protected directories.
 > ```
@@ -193,34 +221,31 @@
 > ```
 ##
 
-3. > ### Activate the environment
 
+2. > ### Activate the environment
    > ##### - Windows
    > ```
    > .venv\Scripts\activate
    > ```
-   
    > ##### - Linux, MacOS and WSL
    > ```
    > source .venv/bin/activate
    > ```
    > ##
+   
 3. > ### Install PyTorch
    > ###### - NVIDIA: 
    > ```
-   > pip3 install torch==2.3.0+cu121 torchvision --index-url=https://download.pytorch.org/whl/cu121
+   > pip3 install torch==2.3.0+cu121 torchvision torchaudio --index-url=https://download.pytorch.org/whl/cu121
    > ```
-   
    > ###### - AMD Linux: 
    > ```
    > pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0
    > ```
-
    > ##### - AMD Windows:
    > ``` 
    > pip install torch-directml
    > ```
-   
    > ###### - MacOS/CPU:
    > ```
    > pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
@@ -230,37 +255,41 @@
 
 <a name="singularity" />
 
-### Singularity
+### Shadowbox
+
 
 5. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox to your current directory.
    > ```
    >  git clone https://github.com/darkshapes/sdbx.git
    >  ```
    > ##### Anticipated functionality of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) will also allow you to run Singularity from command line.
-##
-6. > ### Install the last requirements
+   > ##
+   
+5. > ### Install the last requirements
    > ```
    > cd sdbx
-   > pip install -r requirements.txt
+   > pip install -r <(sed '/^[torch|torchaudio]/d' requirements.txt)
    > ```
-##
+   > ##
+
+6. > ### *[07/16/24 Hotfix]* Remove `/comfy/web` folder, then place these folders inside the `/sdbx` root directory  [singularity-20240716.zip](https://github.com/user-attachments/files/16257537/singularity-20240716.zip)
+
+   
 7. ### Launch Shadowbox
    > ```
    > python main.py --output-directory /YOUR_FOLDER_NAME --input-directory /YOUR_FOLDER_NAME/input
    > ```
-   
    > ##### AMD DIRECTML
    > ```
    > python main.py --directml --output-directory /YOUR_FOLDER_NAME --input-directory /YOUR_FOLDER_NAME/input
    > ```
-   
    > ##### OLDER COMPUTERS
    > ```
    > python main.py --force-fp16 --output-directory /YOUR_FOLDER_NAME --input-directory /YOUR_FOLDER_NAME/input
    > ```
-##
-
-8. > ### Open your browser to [127.0.0.1:8188](https://127.0.0.1:8188) and Choose Singularity from the settings menu 
+   > ##
+   
+8. > ### Open your browser to [127.0.0.1:8188](https://127.0.0.1:8188)
 
 # Done!
 <details><summary>
