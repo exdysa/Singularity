@@ -2,6 +2,10 @@
 
 # [Singularity](#singularity) - A UI for [Shadowbox](https://github.com/darkshapes/sdbx)
 
+![SDBXtext](https://github.com/user-attachments/assets/7ca16a7b-0826-4e1d-b6ac-e00c443d4777)
+
+##
+
 <div align="center"> 
   
  ### [ [Windows](#windows) | [MacOS](#macos) | [Linux](#linux) ]
