@@ -2,6 +2,10 @@
 
 # [Singularity](#singularity) - A UI for [Shadowbox](https://github.com/darkshapes/sdbx)
 
+![SDBXtext](https://github.com/user-attachments/assets/7ca16a7b-0826-4e1d-b6ac-e00c443d4777)
+
+##
+
 <div align="center"> 
   
  ### [ [Windows](#windows) | [MacOS](#macos) | [Linux](#linux) ]
@@ -257,7 +261,8 @@
 
 ### Shadowbox
 
-4. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox with Singularity into your current directory.
+
+5. > ### Once PyTorch and Friends are installed, run this command to install Shadowbox to your current directory.
    > ```
    >  git clone https://github.com/darkshapes/sdbx.git
    >  ```
