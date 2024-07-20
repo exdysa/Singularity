@@ -11,16 +11,6 @@
  ### [ [Windows](#windows) | [MacOS](#macos) | [Linux](#linux) ]
 
 <hr>
- 
-#### Our Design Principles  </div>
-##
-> ##### I. Insight is an essential right and paves the way for safeguarding others' rights. </span>
-> ##### II. Our task is to dissolve obstacles, inviting self-realization, connection, and understanding.
-> ##### III. Let the transcendence of manual tasks give way to exploration, inspiration and creativity.
-> ##### IV. Together, today, we refine our world with the systematic and spontaneous.
-> ##### V: As much as necessary, with as little as possible.
-
-##
 
 ![Screenshot 2024-07-16 193141(1)](https://github.com/user-attachments/assets/6e79bd1d-7dfa-4931-bcb9-4386b6d0128c)
 
