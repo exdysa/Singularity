@@ -90,7 +90,7 @@ const NodePickerComponent = ({ setActiveItem, setShowPath }: any) => {
 
       <ContextMenuSeparator />
 
-      <div className="flex flex-col">
+      <div className="nodeMenu flex flex-col overflow-y-scroll" style={{ maxHeight: '14rem', scrollbarWidth: 'none' }} >
         {
           (keywords === "") ?
             Object.entries(category).map(([cat, items], index) => (
